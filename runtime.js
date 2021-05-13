@@ -1,27 +1,8 @@
-let randomButton = document.getElementById("randomLesson");
-
-let changeColor = document.getElementById("randomLesson");
-
-chrome.storage.sync.get("color", ({ color }) => {
-    changeColor.style.backgroundColor = color;
-});
-
-randomButton.addEventListener("click", async () => {  
-    let level = document.querySelector('input[name="levels"]:checked').value;
-    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    chrome.storage.sync.set({ level });
-
-    chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        files: ['runtime.js'],
-    });
-});
-
 function has(nodeList, selector) {
     return Array.from(nodeList).filter(e => e.querySelector(selector))
 }
 
-function contains(nodeList, text) {
+function containsLevel(nodeList, text) {
     return Array.from(nodeList).filter(e => containsDeep(e, text))
 }
 
@@ -63,22 +44,27 @@ function getText(elem) {
 
 async function startRandomLesson() {
 
-    level = await chrome.storage.sync.get("level");
-    let skills = document.querySelectorAll('div[data-test="skill"]');
-    skills = containsLevel(skills, level);
-    
-    var n_elements = skills.length;
-    if(n_elements > 0){
-        var random = Math.floor(Math.random() * n_elements);
+    chrome.storage.sync.get("level", ({ level }) => {
+        let skills = document.querySelectorAll('div[data-test="skill"]');
+        skills = containsLevel(skills, level);
 
-        var selected = skills[random];
+        var n_elements = skills.length;
+        if (n_elements > 0) {
+            var random = Math.floor(Math.random() * n_elements);
 
-        selected.querySelector('div._15U-t').click();
+            var selected = skills[random];
 
-        let start = document.querySelector('button[data-test="start-button"]');
+            selected.querySelector('div._15U-t').click();
 
-        start.click();
-    }
-    
-        
+            let start = document.querySelector('button[data-test="start-button"]');
+
+            start.click();
+        }
+    });
+
+
 }
+
+
+
+startRandomLesson();

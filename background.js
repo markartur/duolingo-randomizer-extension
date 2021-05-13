@@ -1,21 +1,10 @@
-let randomButton = document.getElementById("randomLesson");
+let color = '#3aa757';
 
-let changeColor = document.getElementById("randomLesson");
-
-chrome.storage.sync.get("color", ({ color }) => {
-    changeColor.style.backgroundColor = color;
+chrome.runtime.onInstalled.addListener(() => {
+    chrome.storage.sync.set({ color });
+    console.log('Default background color set to %cgreen', `color: ${color}`);
 });
 
-randomButton.addEventListener("click", async () => {  
-    let level = document.querySelector('input[name="levels"]:checked').value;
-    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    chrome.storage.sync.set({ level });
-
-    chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        files: ['runtime.js'],
-    });
-});
 
 function has(nodeList, selector) {
     return Array.from(nodeList).filter(e => e.querySelector(selector))
@@ -59,26 +48,3 @@ function getText(elem) {
 
     return ret;
 };
-
-
-async function startRandomLesson() {
-
-    level = await chrome.storage.sync.get("level");
-    let skills = document.querySelectorAll('div[data-test="skill"]');
-    skills = containsLevel(skills, level);
-    
-    var n_elements = skills.length;
-    if(n_elements > 0){
-        var random = Math.floor(Math.random() * n_elements);
-
-        var selected = skills[random];
-
-        selected.querySelector('div._15U-t').click();
-
-        let start = document.querySelector('button[data-test="start-button"]');
-
-        start.click();
-    }
-    
-        
-}

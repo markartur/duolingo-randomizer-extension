@@ -1,0 +1,33 @@
+{
+    "name": "Duolingo Lesson Randomizer",
+    "description": "Picks a random lesson of the desired level",
+    "version": "0.1",
+    "manifest_version": 3,
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "scripting",
+        "storage"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": ["injected.js","runtime.js"],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "all_frames": true,
+            "js": ["injector.js"]
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    }
+}
