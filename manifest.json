@@ -17,6 +17,18 @@
             ]
         }
     ],
+    "content_scripts": [
+        {
+            "matches": [
+                "http://www.duolingo.com/*",
+                "https://www.duolingo.com/*"
+            ],
+            "js": [
+                "levelCounter.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
     "action": {
         "default_popup": "popup.html"
     }

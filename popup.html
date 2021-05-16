@@ -10,30 +10,68 @@
 <body>
     <h3>Select a level:</h3>
     
-    <div>
-        <input type="radio" id="1" name="levels" value="1" checked>
-        <label for="1">1</label>
-    </div>
-    
-    <div>
-        <input type="radio" id="2" name="levels" value="2">
-        <label for="2">2</label>
-    </div>
-    
-    <div>
-        <input type="radio" id="3" name="levels" value="3">
-        <label for="3">3</label>
+    <div class='level'>
+        <div class='levelLabel'>
+            <h4>Level 1:</h4>
+            <input type="radio" id="1" name="levels" value="1" checked>
+        </div>
+        <div class='total'>
+            <h5>total:</h5>
+            <div class='total' id='level1total'></div>
+        </div>
     </div>
 
-    <div>
-        <input type="radio" id="4" name="levels" value="4">
-        <label for="4">4</label>
+
+    
+    <div class='level'>
+        <div class='levelLabel'>
+            <h4>Level 2:</h4>
+            <input type="radio" id="2" name="levels" value="2" checked>
+        </div>
+        <div class='total'>
+            <h5>total:</h5>
+            <div class='total' id='level2total'></div>
+        </div>
+    </div>
+    
+
+    <div class='level'>
+        <div class='levelLabel'>
+            <h4>Level 3:</h4>
+            <input type="radio" id="3" name="levels" value="3" checked>
+        </div>
+        <div class='total'>
+            <h5>total:</h5>
+            <div class='total' id='level3total'></div>
+        </div>
     </div>
 
-    <div>
-        <input type="radio" id="5" name="levels" value="5">
-        <label for="5">5</label>
+
+
+    <div class='level'>
+        <div class='levelLabel'>
+            <h4>Level 4:</h4>
+            <input type="radio" id="4" name="levels" value="4" checked>
+        </div>
+        <div class='total'>
+            <h5>total:</h5>
+            <div class='total' id='level4total'></div>
+        </div>
     </div>
+
+
+    <div class='level'>
+        <div class='levelLabel'>
+            <h4>Level 5:</h4>
+            <input type="radio" id="5" name="levels" value="5" checked>
+        </div>
+        <div class='total'>
+            <h5>total:</h5>
+            <div class='total' id='level5total'></div>
+        </div>
+    </div>
+
+
 
     
     <button id="randomLesson">Start Random Lesson</button>

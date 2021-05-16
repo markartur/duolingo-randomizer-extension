@@ -26,3 +26,26 @@ label {
   margin: auto;
   display: inline-block;
 }
+
+.total {
+  display: inline-block;
+  text-align: center;
+}
+
+.levelLabel {
+  height: 32px;
+}
+
+.level {
+  margin-bottom: 10px;
+}
+
+h4 {
+  display: inline-block;
+}
+
+h5 {
+  display: inline-block;
+  text-align: center;
+  margin: auto;
+}
